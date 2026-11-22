@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美国史：理想与现实之间 · 数字读物</title>
+  <meta name="description" content="一部以阅读为核心的美国历史数字读物，从美洲原住民社会到21世纪。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">一部持续扩充的美国历史数字读物</div>
+        <h1>美国史：<br><em>理想与现实之间</em></h1>
+        <p class="lead">从美洲原住民的古老文明，到二十一世纪的美国。以方纳的自由史观为阅读主线，以《美国通史》六卷本为学术骨架，以资中筠的二十世纪观察为专题补充——沿着时间顺序，完整、连续地阅读一个国家的历史。</p>
+        <div class="hero-meta">
+          <span><i class="dot"></i> 全 9 篇 125 章框架</span>
+          <span><i class="dot"></i> 已完成 10 章完整正文</span>
+          <span><i class="dot"></i> 阅读记录仅存于本机</span>
+          <span><i class="dot"></i> <a href="about.html" style="color:var(--navy-2)">编撰说明与资料来源</a></span>
+        </div>
+        <div id="continueBox"></div>
+      </div>
+    </section>
+
+    <!-- 主要历史时期 -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2>九篇 · 主要历史时期</h2><a class="more" href="toc.html">查看完整目录 →</a></div>
+        <div class="period-grid" id="periodGrid"></div>
+      </div>
+    </section>
+
+    <!-- 时间轴 -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2>美国历史时间轴</h2><span class="more tiny muted">点击已撰写节点进入正文</span></div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- 疆域变化 -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2>美国领土扩张示意</h2><span class="more tiny muted">示意图 · 非精确地理边界</span></div>
+        <div class="territory-layout">
+          <div class="territory-map" id="territoryMap"></div>
+          <div class="territory-list" id="territoryList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 人物与事件 -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2>历史人物与事件入口</h2><a class="more" href="indexes.html">完整索引 →</a></div>
+        <p class="tiny muted" style="margin:-12px 0 18px">下列人物与事件均可点击进入相关章节。更多索引条目随正文扩充持续增加。</p>
+        <div style="font-family:var(--font-serif);font-size:16px;margin-bottom:12px">关键人物</div>
+        <div class="chip-grid" id="peopleChips"></div>
+        <div style="font-family:var(--font-serif);font-size:16px;margin:26px 0 12px">重要事件</div>
+        <div class="chip-grid" id="eventChips"></div>
+      </div>
+    </section>
+
+    <!-- 阅读进度 -->
+    <section class="section" style="border-bottom:none">
+      <div class="wrap">
+        <div class="section-head"><h2>我的阅读</h2></div>
+        <p id="progressText" class="tiny muted"></p>
+        <div style="height:6px;background:var(--paper-3);max-width:420px;margin:10px 0 18px"><div id="progressBar" style="height:100%;background:var(--navy);width:0"></div></div>
+        <a href="toc.html" class="chip" style="display:inline-block">继续阅读 →</a>
+      </div>
+    </section>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

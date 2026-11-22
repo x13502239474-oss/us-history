@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>完整目录 · 美国史：理想与现实之间</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+  <div class="toc-hero">
+    <div class="eyebrow">全 9 篇 · 125 章</div>
+    <h1>完整历史目录</h1>
+    <p>这是全书的完整结构。标注"已撰写"的章节可点击进入正文；标注"待撰"的章节尚未完成，暂不可读。目录结构保持稳定，正文逐章补齐，不设空壳页面。</p>
+  </div>
+  <div id="tocRoot"></div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script>
+(function(){
+  var D=window.US_HISTORY, C=window.Core;
+  C.renderHeader('toc'); C.renderFooter();
+  document.getElementById('tocRoot').innerHTML = D.volumes.map(function(v){
+    var ready=v.chapters.filter(function(c){return c.status==='ready';}).length;
+    var lis=v.chapters.map(function(c){
+      var ok=c.status==='ready';
+      var badge=ok?'<span class="badge-ready">已撰写</span>':'<span class="badge-pending">待撰</span>';
+      var inner='<span class="ch-no">'+c.id+'</span><span class="ch-title">'+c.title+badge+'</span><span class="ch-years">'+c.years+'</span>';
+      return '<li>'+(ok?'<a href="'+C.chapterUrl(c.id)+'">'+inner+'</a>':'<span class="pending">'+inner+'</span>')+'</li>';
+    }).join('');
+    return '<section class="volume" id="v'+v.id+'"><div class="volume-head">'+
+      '<div class="vol-num">'+v.id+'</div><div><h2>'+v.roman+'　'+v.title+'</h2>'+
+      '<div class="v-meta">'+v.period+' · '+ready+'/'+v.chapters.length+' 章已撰写</div>'+
+      '<p>'+v.summary+'</p></div></div><ul class="chapter-list">'+lis+'</ul></section>';
+  }).join('');
+})();
+</script>
+</body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阅读 · 美国史：理想与现实之间</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="reader-shell">
+  <aside class="reader-aside" id="readerAside"></aside>
+  <main class="reader-main" id="readerMain">
+    <button class="icon-btn mobile-toc-btn" id="mobileTocBtn">本章目录 / 工具</button>
+    <div id="articleRoot"></div>
+  </main>
+  <div class="reader-tools-rail">
+    <button id="railFav" title="收藏本章">☆</button>
+    <button id="railToc" title="本章目录">≡</button>
+    <button id="railSet" title="阅读设置">A</button>
+    <button id="railTop" title="回到顶部">↑</button>
+  </div>
+</div>
+
+<div class="overlay" id="drawerOverlay"></div>
+<aside class="settings-panel" id="settingsPanel">
+  <h3>阅读设置</h3>
+  <div class="setting-row">
+    <label>正文字号 <span class="val" id="sizeVal">18px</span></label>
+    <input type="range" id="setSize" min="15" max="24" step="1">
+  </div>
+  <div class="setting-row">
+    <label>行距 <span class="val" id="lineVal">1.9</span></label>
+    <input type="range" id="setLine" min="1.5" max="2.3" step="0.1">
+  </div>
+  <div class="setting-row">
+    <label>阅读宽度 <span class="val" id="widthVal">720px</span></label>
+    <input type="range" id="setWidth" min="560" max="940" step="20">
+  </div>
+  <button class="icon-btn" id="resetSettings" style="width:100%;padding:10px">恢复默认</button>
+  <p class="settings-note">设置仅保存在本机浏览器。移动端屏幕已自动适配，宽度设置主要在桌面端生效。</p>
+</aside>
+
+<!-- 章节脚本：新增章节时在此追加一行 -->
+<script src="js/data.js"></script>
+<script src="chapters/ch01.js"></script>
+<script src="chapters/ch02.js"></script>
+<script src="chapters/ch03.js"></script>
+<script src="chapters/ch04.js"></script>
+<script src="chapters/ch05.js"></script>
+<script src="chapters/ch06.js"></script>
+<script src="chapters/ch07.js"></script>
+<script src="chapters/ch08.js"></script>
+<script src="chapters/ch09.js"></script>
+<script src="chapters/ch10.js"></script>
+<script src="js/core.js"></script>
+<script src="js/reader.js"></script>
+</body>
+</html>

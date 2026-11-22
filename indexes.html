@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人物与事件索引 · 美国史：理想与现实之间</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+  <div class="toc-hero">
+    <div class="eyebrow">人名 · 事件 · 年代</div>
+    <h1>历史人物与事件索引</h1>
+    <p>索引随正文撰写同步扩充。当前条目主要来自第一篇；点击条目下方章节号进入相关正文。本索引不收录尚未撰写章节的独立条目。</p>
+  </div>
+  <div id="indexRoot"></div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script>
+(function(){
+  var D=window.US_HISTORY, C=window.Core, esc=C.escapeHtml;
+  C.renderHeader('index'); C.renderFooter();
+  var chLinks=function(ids){
+    return ids.filter(function(id){var c=D.getChapter(id);return c&&c.meta.status==='ready';})
+      .map(function(id){return '<a href="'+C.chapterUrl(id)+'">第'+id+'章</a>';}).join('');
+  };
+  var peopleHtml=D.people.filter(function(p){return chLinks(p.chapters);}).map(function(p){
+    return '<article class="index-card"><div><div class="ix-name">'+esc(p.name)+'</div>'+
+      '<div class="ix-en">'+esc(p.en)+' · '+esc(p.years)+'</div>'+
+      '<div class="ix-role">'+esc(p.role)+'</div></div><div><p>'+esc(p.desc)+'</p>'+
+      '<div class="ix-links">'+chLinks(p.chapters)+'</div></div></article>';
+  }).join('');
+  var eventsHtml=D.events.filter(function(e){return chLinks(e.chapters);}).map(function(e){
+    return '<article class="index-card"><div><div class="ix-name">'+esc(e.year)+'</div></div>'+
+      '<div><div style="font-family:var(--font-serif);font-size:16px">'+esc(e.name)+'</div>'+
+      '<div class="ix-links" style="margin-top:8px">'+chLinks(e.chapters)+'</div></div></article>';
+  }).join('');
+  document.getElementById('indexRoot').innerHTML=
+    '<h2 class="index-group-title">历史人物</h2>'+peopleHtml+
+    '<h2 class="index-group-title">历史事件</h2>'+eventsHtml;
+})();
+</script>
+</body></html>

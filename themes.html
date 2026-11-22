@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>历史专题 · 美国史：理想与现实之间</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+  <div class="toc-hero">
+    <div class="eyebrow">十条贯穿全书的历史线索</div>
+    <h1>历史专题索引</h1>
+    <p>通史按时间顺序展开，专题则把分散在各篇的相关章节串联起来。点击已撰写的章节进入正文；未撰写章节以灰色显示，仅标示其在专题中的位置。</p>
+  </div>
+  <div class="theme-list" id="themeRoot"></div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script>
+(function(){
+  var D=window.US_HISTORY, C=window.Core;
+  C.renderHeader('themes'); C.renderFooter();
+  document.getElementById('themeRoot').innerHTML = D.themes.map(function(t,i){
+    var links=t.chapters.map(function(id){
+      var ch=D.getChapter(id), ok=ch&&ch.meta.status==='ready';
+      return ok?'<a href="'+C.chapterUrl(id)+'">'+id+' '+ch.meta.title+'</a>':'<span class="off">'+id+'</span>';
+    }).join('');
+    return '<article class="theme-item"><div class="th-no">专题 '+(i+1)+'</div>'+
+      '<h3>'+t.title+'</h3><p>'+t.desc+'</p><div class="th-links">'+links+'</div></article>';
+  }).join('');
+})();
+</script>
+</body></html>

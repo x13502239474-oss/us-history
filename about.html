@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编撰说明 · 美国史：理想与现实之间</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="narrow" style="padding-top:44px;font-family:var(--font-serif);font-size:17px;line-height:1.95">
+  <div class="eyebrow">关于本项目</div>
+  <h1 style="font-family:var(--font-serif);font-size:34px;margin:10px 0 26px">编撰说明与资料来源</h1>
+
+  <h2 style="font-size:22px;margin:30px 0 10px">一、这是什么</h2>
+  <p>这是一部以阅读为核心的美国历史数字读物，目标是让读者从美洲原住民社会一路读到二十一世纪的美国，建立完整、连续、深入的历史认识。它不是课程平台，不设考试、答题、积分、排行榜与打卡；阅读本身即是目的。</p>
+
+  <h2 style="font-size:22px;margin:30px 0 10px">二、三本核心参考书与分工</h2>
+  <div id="booksBox"></div>
+
+  <h2 style="font-size:22px;margin:30px 0 10px">三、必须说明的限制</h2>
+  <p id="accessNote"></p>
+  <p>因此，本读物的全部正文均为编撰者依据通史知识、以自有语言重新叙述的成果，<strong>未复制任何一书的原文段落</strong>。凡引用史料，只作转述并说明出处性质；凡涉及学术争议，尽量并列主要观点，不假托原书作者之口。若读者发现事实错误，欢迎据实指正。</p>
+
+  <h2 style="font-size:22px;margin:30px 0 10px">四、如何扩充</h2>
+  <div class="build-note" style="font-family:var(--font-serif);font-size:16px">
+    <ol>
+      <li>目录与索引在 <code>js/data.js</code>；每章正文是一个独立文件 <code>chapters/chNN.js</code>，可单独编辑。</li>
+      <li>新章节写入后，把 <code>data.js</code> 中对应条目的 <code>status</code> 从 <code>pending</code> 改为 <code>ready</code>，并在 <code>reader.html</code> 的章节脚本列表中加入该文件。</li>
+      <li>首页、目录、搜索、人物与事件索引均自动读取上述数据，无需改动页面结构。</li>
+    </ol>
+  </div>
+
+  <h2 style="font-size:22px;margin:30px 0 10px">五、阅读记录</h2>
+  <p>阅读位置、进度、收藏与字体设置全部保存在本机浏览器的 localStorage 中，不上传、不跨设备同步。清除浏览器数据会一并清除这些记录。</p>
+</div>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script>
+(function(){
+  var D=window.US_HISTORY, C=window.Core, esc=C.escapeHtml;
+  C.renderHeader('about'); C.renderFooter();
+  document.getElementById('booksBox').innerHTML=D.books.map(function(b){
+    return '<p style="font-size:16px;margin:14px 0"><strong style="color:var(--navy)">《'+esc(b.title)+'》</strong>　'+esc(b.author)+
+      '<br><span style="font-size:14px;color:var(--ink-3)">分工：'+esc(b.role)+'。'+esc(b.desc)+
+      '<br>文本获取状况：'+esc(b.access)+'。</span></p>';
+  }).join('');
+  document.getElementById('accessNote').textContent=D.site.sourceNote.join('　');
+})();
+</script>
+</body></html>
